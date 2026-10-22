@@ -1,0 +1,58 @@
+name: Build QMK firmware
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build Userspace Firmware
+    runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli:latest
+
+    steps:
+      - name: Disable git safe directory checks
+        run: git config --global --add safe.directory '*'
+
+      - name: Checkout Userspace
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Checkout QMK Firmware
+        uses: actions/checkout@v4
+        with:
+          path: qmk_firmware
+          repository: qmk/qmk_firmware
+          ref: master
+          submodules: recursive
+
+      - name: Install QMK CLI dependencies
+        run: pip install -r qmk_firmware/requirements.txt
+
+      - name: Configure QMK CLI
+        run: |
+          qmk config userspace_compile.parallel=$(nproc)
+          qmk config user.qmk_home=$GITHUB_WORKSPACE/qmk_firmware
+          qmk config user.overlay_dir=$GITHUB_WORKSPACE
+
+      - name: Validate userspace
+        run: qmk userspace-doctor
+
+      - name: Build
+        run: qmk userspace-compile
+
+      - name: Upload binaries
+        uses: actions/upload-artifact@v4
+        if: always() && !cancelled()
+        continue-on-error: true
+        with:
+          name: Firmware
+          path: |
+            *.bin
+            *.hex
+            *.uf2

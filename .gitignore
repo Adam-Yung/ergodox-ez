@@ -1,0 +1,12 @@
+# QMK build artifacts
+*.hex
+*.bin
+*.uf2
+*.elf
+
+# QMK firmware checkout (pulled by CI / local setup, not part of userspace)
+/qmk_firmware/
+
+# OS cruft
+.DS_Store
+Thumbs.db
