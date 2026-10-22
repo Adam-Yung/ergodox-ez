@@ -279,15 +279,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MOUSE] = LAYOUT_ergodox_pretty(
   KC_NO,   M_MOUSE1, M_MOUSE2, M_MOUSE3, M_MOUSE4, M_MOUSE5, KC_NO,
   KC_NO,   M_MOUSE1, M_MOUSE2, M_MOUSE3, M_MOUSE4, M_MOUSE5, KC_NO,
-  KC_NO,   MS_ACL2, MS_ACL1, KC_BTN2, KC_BTN1, KC_NO,
+  KC_NO,   MS_ACL2, MS_ACL1, MS_BTN2, MS_BTN1, KC_NO,
   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   KC_NO,   KC_NO,   KC_NO,   KC_LSFT, MS_ACL1,
                                                KC_MUTE, KC_NO,
                                                         KC_NO,
                                       KC_NO,   MO(MOUSEEXT), KC_NO,
-                    KC_NO,   KC_NO,   KC_BTN4, KC_MS_U, KC_BTN5, KC_NO,   KC_NO,
-                    KC_NO,   KC_NO,   KC_BTN4, KC_MS_U, KC_BTN5, KC_NO,   KC_NO,
-                             KC_NO,   KC_MS_L, KC_MS_D, KC_MS_R, KC_NO,   KC_NO,
+                    KC_NO,   KC_NO,   MS_BTN4, MS_UP, MS_BTN5, KC_NO,   KC_NO,
+                    KC_NO,   KC_NO,   MS_BTN4, MS_UP, MS_BTN5, KC_NO,   KC_NO,
+                             KC_NO,   MS_LEFT, MS_DOWN, MS_RGHT, KC_NO,   KC_NO,
                     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                     KC_NO,   KC_NO,
@@ -305,9 +305,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_TRNS, KC_TRNS,
                                                         KC_TRNS,
                                       KC_TRNS, KC_TRNS, KC_TRNS,
-                    KC_TRNS, KC_TRNS, KC_BTN4, KC_WH_U, KC_BTN5, KC_TRNS, KC_TRNS,
-                    KC_TRNS, KC_TRNS, KC_BTN4, KC_WH_U, KC_BTN5, KC_TRNS, KC_TRNS,
-                             KC_TRNS, KC_WH_L, KC_WH_D, KC_WH_R, KC_TRNS, KC_TRNS,
+                    KC_TRNS, KC_TRNS, MS_BTN4, MS_WHLU, MS_BTN5, KC_TRNS, KC_TRNS,
+                    KC_TRNS, KC_TRNS, MS_BTN4, MS_WHLU, MS_BTN5, KC_TRNS, KC_TRNS,
+                             KC_TRNS, MS_WHLL, MS_WHLD, MS_WHLR, KC_TRNS, KC_TRNS,
                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                     KC_TRNS, KC_TRNS,
@@ -325,9 +325,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_TRNS, KC_TRNS,
                                                         KC_TRNS,
                                       KC_TRNS, KC_TRNS, KC_TRNS,
-                    KC_TRNS, KC_TRNS, KC_BTN4, KC_MS_U, KC_BTN5, KC_TRNS, KC_TRNS,
-                    KC_TRNS, KC_TRNS, KC_BTN4, KC_MS_U, KC_BTN5, KC_TRNS, KC_TRNS,
-                             KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS, KC_TRNS,
+                    KC_TRNS, KC_TRNS, MS_BTN4, MS_UP, MS_BTN5, KC_TRNS, KC_TRNS,
+                    KC_TRNS, KC_TRNS, MS_BTN4, MS_UP, MS_BTN5, KC_TRNS, KC_TRNS,
+                             KC_TRNS, MS_LEFT, MS_DOWN, MS_RGHT, KC_TRNS, KC_TRNS,
                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                     KC_TRNS, KC_TRNS,
@@ -345,9 +345,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_TRNS, KC_TRNS,
                                                         KC_TRNS,
                                       KC_TRNS, KC_TRNS, KC_TRNS,
-                    KC_TRNS, KC_TRNS, KC_BTN4, KC_MS_U, KC_BTN5, KC_TRNS, KC_TRNS,
-                    KC_TRNS, KC_TRNS, KC_BTN4, KC_MS_U, KC_BTN5, KC_TRNS, KC_TRNS,
-                             KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS, KC_TRNS,
+                    KC_TRNS, KC_TRNS, MS_BTN4, MS_UP, MS_BTN5, KC_TRNS, KC_TRNS,
+                    KC_TRNS, KC_TRNS, MS_BTN4, MS_UP, MS_BTN5, KC_TRNS, KC_TRNS,
+                             KC_TRNS, MS_LEFT, MS_DOWN, MS_RGHT, KC_TRNS, KC_TRNS,
                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                     KC_TRNS, KC_TRNS,
@@ -358,15 +358,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };  // end keymaps
 
 /* ==========================================================================
- * require-prior-idle-ms = 150
+ * Home-row-mod tap/hold callbacks
  *
- * ZMK's hold-taps suppress the hold if a key was tapped very recently, which
- * prevents accidental mods during fast typing rolls. QMK has no built-in
- * equivalent, so we track the last non-mod keypress time and force any
- * mod-tap to resolve as a TAP when pressed within 150ms of it.
+ * require-prior-idle-ms is handled by core Flow Tap (FLOW_TAP_TERM in
+ * config.h), so no custom pre_process_record_user is needed here.
  * ========================================================================== */
-static uint16_t last_keydown_time = 0;
-static bool     last_was_typing   = false;
 
 static bool is_cornix_hrm(uint16_t keycode) {
     switch (keycode) {
@@ -388,8 +384,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 }
 
 /* "balanced" flavor: allow hold-on-other-key-press for the HRM keys so that
- * mod + key chords on the opposite hand register as holds, while same-hand
- * rolls still favor taps (handled by the prior-idle guard below). */
+ * mod + key chords on the opposite hand register as holds. Fast same-hand
+ * rolls favor taps via Flow Tap (FLOW_TAP_TERM in config.h). */
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     if (is_cornix_hrm(keycode)) {
         return true;
@@ -403,26 +399,6 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
         return QUICK_TAP_TERM;  // 175
     }
     return QUICK_TAP_TERM;
-}
-
-/* --- require-prior-idle-ms = 150 ------------------------------------------
- * If an HRM key is pressed within 150ms of the previous (non-HRM) keypress,
- * force it to register as its TAP keycode. Rewriting record->keycode here in
- * pre_process_record_user happens BEFORE the tap-hold state machine runs, so
- * the key cleanly behaves as a tap with no risk of a stray modifier. */
-bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        if (is_cornix_hrm(keycode) && last_was_typing &&
-            timer_elapsed(last_keydown_time) < REQUIRE_PRIOR_IDLE_MS) {
-            record->keycode = QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
-        }
-        /* Track the last ordinary (non-HRM) keypress as the "typing" anchor. */
-        if (!is_cornix_hrm(keycode)) {
-            last_keydown_time = record->event.time;
-            last_was_typing   = true;
-        }
-    }
-    return true;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

@@ -33,10 +33,11 @@
 #define PERMISSIVE_HOLD
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
-/* require-prior-idle-ms = 150: if a key was tapped <150ms ago, treat the
- * mod-tap as a tap (prevents accidental mods during fast typing). Implemented
- * via last-keypress timestamp tracking in process_record_user. */
-#define REQUIRE_PRIOR_IDLE_MS 150
+/* require-prior-idle-ms = 150: QMK's core "Flow Tap" is the direct equivalent
+ * (aka Require Prior Idle / Global Quick Tap). A mod-tap pressed within this
+ * window of the previous alpha/space key resolves immediately as a tap, which
+ * prevents accidental mods during fast typing. */
+#define FLOW_TAP_TERM 150
 
 /* CAPS WORD: idle timeout roughly matching a word boundary. */
 #define CAPS_WORD_IDLE_TIMEOUT 3000
