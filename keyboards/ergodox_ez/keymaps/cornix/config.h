@@ -20,9 +20,11 @@
  *   hold-trigger-key-positions        <- Achordion (opposite-hand) handling in keymap.c
  * ------------------------------------------------------------------------- */
 
+#undef TAPPING_TERM
 #define TAPPING_TERM 280
 #define TAPPING_TERM_PER_KEY
 
+#undef QUICK_TAP_TERM
 #define QUICK_TAP_TERM 175
 #define QUICK_TAP_TERM_PER_KEY
 
@@ -45,14 +47,24 @@
  * QMK's MK_COMBINED lets us switch acceleration profiles per layer via
  * KC_ACL0 / KC_ACL1 / KC_ACL2, which we map on the speed layers. */
 #define MK_COMBINED
+/* The Ergodox EZ base config.h already defines these mousekey values, and QMK
+ * builds with -Werror, so #undef before overriding. */
+#undef MOUSEKEY_DELAY
 #define MOUSEKEY_DELAY 0
+#undef MOUSEKEY_INTERVAL
 #define MOUSEKEY_INTERVAL 16
+#undef MOUSEKEY_MAX_SPEED
 #define MOUSEKEY_MAX_SPEED 6
+#undef MOUSEKEY_TIME_TO_MAX
 #define MOUSEKEY_TIME_TO_MAX 0
+#undef MOUSEKEY_WHEEL_DELAY
 #define MOUSEKEY_WHEEL_DELAY 0
 
 /* RGB MATRIX: start dim (the ZMK widget used a /16 brightness divisor). */
 #ifdef RGB_MATRIX_ENABLE
+#  undef RGB_MATRIX_DEFAULT_VAL
 #  define RGB_MATRIX_DEFAULT_VAL 60
-#  define RGB_MATRIX_KEYPRESSES
+#  ifndef RGB_MATRIX_KEYPRESSES
+#    define RGB_MATRIX_KEYPRESSES
+#  endif
 #endif
